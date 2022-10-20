@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PodpowiedzActivity">
+    tools:context=".PodpowiedzActivity"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ten szczytwznosi się ponad 500 m nad dolinę Wołosatki i wyróżnia się osobliwą sylwetką. Od sąsiedniego masywu Krzemienia grzbiet (faktycznie zwornikiem jest Tarniczka) oddzielony jest głęboką Przełęczą Goprowską, natomiast z Szerokim Wierchem łączy się charakterystyczną, ostro wciętą w grzbiet przełęczą o wysokości 1286 m, od której pochodzi nazwa góry (w języku rumuńskim słowo „tarnița” oznacza siodło, przełęcz). Wąski, ostry, nieco wydłużony grzbiet góry, z dwoma wyraźnymi wierzchołkami (1346 i 1339 m), wyścielają złomiska skał i zdobią bruzdy naturalnych zagłębień, a także resztki wojennych okopów. Z południowej strony opada w dół wysoka skalna ściana, a niżej rozścielają się wielkie pola kamiennego rumoszu. Na głównej kulminacji znajduje się punkt geodezyjny. W 1987 na szczycie ustawiono 7-metrowy krzyż, upamiętniający – wraz z wmurowaną tablicą – pobyt ks. Karola Wojtyły 5 sierpnia 1953. Po złamaniu się krzyża na wiosnę 2000, w dniu 2 września tego roku postawiono nowy stalowy krzyż (liczący ok. 8,5 metra, ważący ok. 500 kg; wyniesiony przez pielgrzymów na Tarnicę w częściach), który 16 września 2000 poświęcił bp Adam Dyczkowski[3][4].
+
+    Tarnica stanowi najbardziej atrakcyjny punkt widokowy w polskich Bieszczadach. Oprócz wspaniałej panoramy najbliższych grzbietów polskiej części Bieszczadów, w pogodne dni można dostrzec: Tatry[5], Gorgany, Ostrą Horę, Połoninę Równą[6], Połoninę Krasną, Świdowiec[7], a przy bardzo dobrych warunkach pogodowych możemy dostrzec: Pasmo Wyhorlacko-Gutyjskie, Góry Ignis[8], górę Vlădeasa[9] i Pietrosula Rodnei w Górach Rodniańskich."
+            android:textSize="24sp" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:layout_weight="1"/>
+
+</LinearLayout>

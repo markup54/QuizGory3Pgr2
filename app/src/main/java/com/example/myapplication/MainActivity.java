@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Button sprawdzButton;
+    Button podpowiedzButton;
     RadioGroup odpowiedziRadioGroup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,17 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+        podpowiedzButton = findViewById(R.id.button2);
+        podpowiedzButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intencja = new Intent(MainActivity.this,
+                        PodpowiedzActivity.class);
+                //intencja jawna
+                //wiadomo skąd dokąd
+                startActivity(intencja);
+            }
+        });
     }
     private boolean sprawdz(){
         odpowiedziRadioGroup = findViewById(R.id.radioGroup);
