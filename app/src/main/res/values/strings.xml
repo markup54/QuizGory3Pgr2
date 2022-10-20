@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="pytanie">Jaki szczyt jest widoczny na zdjęciu?</string>
+    <string name="spr">Sprawdź odpowiedź</string>
+    <string name="podp">Podpowiedz</string>
+    <string name="opis">Szczyt z krzyżem niewiele skał</string>
+    <string name="ok">Dobra odpowiedź</string>
+    <string name="no">Musisz to jeszcze przemyśleć</string>
+</resources>
