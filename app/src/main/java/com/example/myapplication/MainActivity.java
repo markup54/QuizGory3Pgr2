@@ -68,8 +68,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intencja = new Intent(MainActivity.this,
                         PodpowiedzActivity.class);
+
                 //intencja jawna
                 //wiadomo skąd dokąd
+                //TODO przekazać w intencji jakie pytanie
+                intencja.putExtra("Index",aktualnyIndeks);
                 startActivity(intencja);
             }
         });
