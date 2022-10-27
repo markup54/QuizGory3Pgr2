@@ -6,18 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".PodpowiedzActivity"
     android:orientation="vertical">
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="Wybrano podpowiedź do pytania:"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:id="@+id/podpPytaniaTextView"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="5">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/podpowiedzTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/opisScroll"
-            android:textSize="24sp" />
+            android:textSize="16sp" />
     </ScrollView>
 
     <Button
