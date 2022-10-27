@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -44,11 +45,13 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(sprawdz()){
+                        if(sprawdz(pytanka.get(aktualnyIndeks).getOdpowiedz())){
                             Toast.makeText(MainActivity.this,
                                     R.string.ok,
                                     Toast.LENGTH_SHORT).show();
                             aktualnyIndeks++;
+                            if(aktualnyIndeks==pytanka.size())
+                                aktualnyIndeks =0; //TODO widok z zakonczeniem testu
                             wypelnijWidokiPytaniem(aktualnyIndeks);
                         }
                         else{
@@ -71,25 +74,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    private boolean sprawdz(){
-        odpowiedziRadioGroup = findViewById(R.id.radioGroup);
-        int idRadio = odpowiedziRadioGroup.getCheckedRadioButtonId();
-        if(idRadio == R.id.radioButton2)
-            return true;
-        else
-            return false;
+    private boolean sprawdz(int numerOdpowiedzi){
+        RadioButton[] radioButtony =
+                new RadioButton[] {odpaRadioButton,odpbRadioButton,odpcRadioButton};
+        for (int i =0 ;i<radioButtony.length;i++) {
+            if(radioButtony[i].isChecked())
+                if(i == numerOdpowiedzi)
+                    return true;
+                else
+                    return false;
+        }
+        return false;
     }
 
     void wypelnijWidokiPytaniem(int i){
         Pytanie aktualnePytanie = pytanka.get(i);
         pytanieTextView.setText(aktualnePytanie.getTresc());
         odpaRadioButton.setText(aktualnePytanie.getOdpowiedzi().get(0));
-        odpaRadioButton.setText(aktualnePytanie.getOdpowiedzi().get(1));
-        odpaRadioButton.setText(aktualnePytanie.getOdpowiedzi().get(2));
+        odpbRadioButton.setText(aktualnePytanie.getOdpowiedzi().get(1));
+        odpcRadioButton.setText(aktualnePytanie.getOdpowiedzi().get(2));
         imageView.setImageResource(aktualnePytanie.getIdObrazka());
         imageView.setContentDescription("Jakaś podpowiedź");//TODO poprawić
-
+        odpaRadioButton.setChecked(false);
+        odpbRadioButton.setChecked(false);
+        odpcRadioButton.setChecked(false);
     }
-
-
 }
