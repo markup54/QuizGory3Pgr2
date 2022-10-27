@@ -2,7 +2,10 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,5 +27,27 @@ public class PodpowiedzActivity extends AppCompatActivity {
         textViewPytanie.setText(pytanka.get(aktualnyIndeks).getTresc());
         TextView textViewPodpowiedz = findViewById(R.id.podpowiedzTextView);
         textViewPodpowiedz.setText(pytanka.get(aktualnyIndeks).getPodpowiedz());
+        Button button1 = findViewById(R.id.button3);
+        Button button = findViewById(R.id.pokazPodpowiedzButton);
+        button.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        textViewPodpowiedz.setVisibility(View.VISIBLE);
+                        button.setVisibility(View.INVISIBLE);
+                        button1.setVisibility(View.VISIBLE);
+
+                    }
+                }
+        );
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intencja = new Intent();
+                setResult(RESULT_OK,intencja);
+                finish();
+            }
+        });
     }
 }

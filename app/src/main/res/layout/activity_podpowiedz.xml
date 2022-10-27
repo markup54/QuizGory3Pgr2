@@ -17,6 +17,13 @@
         android:textSize="24sp"
         android:textAlignment="center"
         android:id="@+id/podpPytaniaTextView"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Podpowiedź do pytania spowoduje zmniejszenie liczby Twoich punktów, czy na pewno chcesz podpowiedź?"
+        android:id="@+id/pokazPodpowiedzButton"
+        android:layout_weight="1"
+        />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,14 +34,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/opisScroll"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:visibility="invisible"/>
     </ScrollView>
 
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        android:layout_weight="1"/>
+        android:text="Wróć"
+        android:layout_weight="1"
+        android:visibility="invisible"/>
 
 </LinearLayout>

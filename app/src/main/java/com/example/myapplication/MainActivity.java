@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     RadioButton odpcRadioButton;
     ImageView imageView;
     ArrayList<Pytanie> pytanka;
+    int liczbaPunktow = 0;
     int aktualnyIndeks =0;//będzie zerem piszemy dla przejrzystości:)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,30 +37,29 @@ public class MainActivity extends AppCompatActivity {
         odpbRadioButton = findViewById(R.id.radioButton2);
         odpcRadioButton = findViewById(R.id.radioButton3);
         imageView = findViewById(R.id.imageView);
-
+        
         Pytanie.przygotujPytania();
         pytanka = Pytanie.pytaniaArrayList;
         wypelnijWidokiPytaniem(aktualnyIndeks);
-
+        int kodPodpowiedzi = 0;
         sprawdzButton = findViewById(R.id.button);
         sprawdzButton.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(sprawdz(pytanka.get(aktualnyIndeks).getOdpowiedz())){
-                            Toast.makeText(MainActivity.this,
-                                    R.string.ok,
-                                    Toast.LENGTH_SHORT).show();
+                            //zliczanie punktow
+                        if(sprawdz(pytanka.get(aktualnyIndeks).getOdpowiedz()))
+                            liczbaPunktow++;
+
                             aktualnyIndeks++;
-                            if(aktualnyIndeks==pytanka.size())
-                                aktualnyIndeks =0; //TODO widok z zakonczeniem testu
+                            if(aktualnyIndeks==pytanka.size()) {
+                                Toast.makeText(MainActivity.this,
+                                        "Koniec testu, zdobyto "+liczbaPunktow,
+                                        Toast.LENGTH_SHORT).show();
+                                aktualnyIndeks --;
+                            } //TODO widok z zakonczeniem testu
                             wypelnijWidokiPytaniem(aktualnyIndeks);
-                        }
-                        else{
-                            Toast.makeText(MainActivity.this,
-                                    R.string.no,
-                                    Toast.LENGTH_SHORT).show();
-                        }
+
                     }
                 }
         );
@@ -73,10 +74,21 @@ public class MainActivity extends AppCompatActivity {
                 //wiadomo skąd dokąd
                 //TODO przekazać w intencji jakie pytanie
                 intencja.putExtra("Index",aktualnyIndeks);
-                startActivity(intencja);
+                liczbaPunktow--;
+                int requestCode = 0;
+                startActivityForResult(intencja,requestCode);
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == RESULT_OK ){
+            liczbaPunktow--;
+        }
+    }
+
     private boolean sprawdz(int numerOdpowiedzi){
         RadioButton[] radioButtony =
                 new RadioButton[] {odpaRadioButton,odpbRadioButton,odpcRadioButton};
